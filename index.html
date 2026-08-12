@@ -12,7 +12,7 @@
     <!-- PWA manifest -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0f172a">
-    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgZmlsbD0iIzBmMTcyYSIvPjxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9IjYwIiBmaWxsPSIjM2I4MmY2Ii8+PHJlY3QgeD0iNzYiIHk9Ijc2IiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IndoaXRlIi8+PGNpcmNsZSBjeD0iODYiIGN5PSI4NiIgcj0iMyIgZmlsbD0iIzBmMTcyYSIvPjxjaXJjbGUgY3g9IjEwNiIgY3k9Ijg2IiByPSIzIiBmaWxsPSIjMGYxNzJhIi8+PGNpcmNsZSBjeD0iODYiIGN5PSIxMDYiIHI9IjMiIGZpbGw9IiMwZjE3MmEiLz48Y2lyY2xlIGN4PSIxMDYiIGN5PSIxMDYiIHI9IjMiIGZpbGw9IiMwZjE3MmEiLz48L3N2Zz4=">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgZmlsbD0[...]">
     <link rel="icon" href="Screenshot 2026-03-08 105358.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono&display=swap');
@@ -84,43 +84,8 @@
 </head>
 <body class="min-h-screen">
 
-    <!-- LOGIN SCREEN -->
-    <div id="login-screen" class="min-h-screen flex flex-col items-center justify-center px-6 animate-in fade-in duration-500">
-        <div class="mb-10 text-center">
-            <div class="w-20 h-20 bg-green-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-green-900/40 mx-auto mb-6">
-                <i data-lucide="server" class="text-white w-10 h-10"></i>
-            </div>
-            <h1 class="text-4xl font-black tracking-tight mb-2 uppercase">Server-Panel</h1>
-            <p class="text-slate-500 text-xs font-black tracking-[0.3em] uppercase">Public Access Mode</p>
-        </div>
-
-        <div class="w-full max-w-sm glass-card rounded-[32px] p-8">
-            <h2 class="text-xl font-bold mb-8">Your name</h2>
-            
-            <div class="space-y-6">
-                <div>
-                    <label class="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-3 block">UserNAME</label>
-                    <div class="relative">
-                        <i data-lucide="user" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500"></i>
-                        <input type="text" id="username" placeholder="Write your name..." 
-                            class="w-full bg-slate-900/50 border border-slate-700 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-blue-500 transition-colors">
-                    </div>
-                </div>
-
-                <button onclick="handleLogin()" class="btn-tap w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-blue-900/20">
-                    <span>Login</span>
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                </button>
-            </div>
-            
-            <p class="mt-6 text-center text-[10px] text-slate-500 font-bold uppercase tracking-widest">
-                
-            </p>
-        </div>
-    </div>
-
-    <!-- MAIN DASHBOARD -->
-    <div id="dashboard-screen" class="hidden">
+    <!-- MAIN DASHBOARD (login removed) -->
+    <div id="dashboard-screen">
         <nav class="sticky top-0 w-full glass-card border-x-0 border-t-0 z-50 px-4 py-4 backdrop-blur-md bg-opacity-80">
             <div class="max-w-2xl mx-auto flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -194,7 +159,7 @@
                     <div class="flex flex-col">
                         <label class="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-3">Server Address</label>
                         <div class="flex items-center gap-4">
-                            <button onclick="copyData(document.getElementById('display-ip').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700 flex items-center justify-center">
+                            <button onclick="copyData(document.getElementById('display-ip').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700">
                                 <i data-lucide="copy" class="w-5 h-5"></i>
                             </button>
                             <span id="display-ip" class="font-mono text-base md:text-xl text-blue-300 break-all leading-tight font-bold">mc.example-server.com:25565</span>
@@ -205,7 +170,7 @@
                     <div class="flex flex-col">
                         <label class="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-3">Software / Engine</label>
                         <div class="flex items-center gap-4">
-                            <button onclick="copyData(document.getElementById('display-software').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700 flex items-center justify-center">
+                            <button onclick="copyData(document.getElementById('display-software').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700">
                                 <i data-lucide="copy" class="w-5 h-5"></i>
                             </button>
                             <span id="display-software" class="text-lg md:text-xl font-bold text-slate-100">Paper 1.20.1</span>
@@ -216,7 +181,7 @@
                     <div class="flex flex-col">
                         <label class="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-3">Session Uptime</label>
                         <div class="flex items-center gap-4">
-                            <button onclick="copyData(document.getElementById('display-uptime').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700 flex items-center justify-center">
+                            <button onclick="copyData(document.getElementById('display-uptime').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700">
                                 <i data-lucide="copy" class="w-5 h-5"></i>
                             </button>
                             <span id="display-uptime" class="text-lg md:text-xl font-bold text-slate-100">2d 14h 05m</span>
@@ -235,7 +200,7 @@
         // ---- persistent storage helpers ----
         function storeData() {
             const data = {
-                username: document.getElementById('username').value.trim(),
+                username: document.getElementById('display-name')?.innerText || 'User',
                 ip: document.getElementById('display-ip').innerText,
                 software: document.getElementById('display-software').innerText,
                 uptime: document.getElementById('display-uptime').innerText
@@ -259,45 +224,19 @@
             localStorage.removeItem('serverPanelData');
         }
 
-        function handleLogin() {
-            const user = document.getElementById('username').value.trim();
-            
-            if (user !== "") {
-                document.getElementById('login-screen').classList.add('hidden');
-                document.getElementById('dashboard-screen').classList.remove('hidden');
-                
-                document.getElementById('display-name').innerText = user;
-                
-                const roleSpan = document.getElementById('display-role');
-                const editBtn = document.getElementById('master-edit-btn');
-
-                // Privilege check
-                if (user === "Bun MengHeng" || user === "Sinlong" || user === "Admin"  ) {
-                    roleSpan.innerText = "System Creator";
-                    roleSpan.classList.replace('text-slate-500', 'text-blue-400');
-                    editBtn.classList.remove('hidden');
-                    showToast("Access Granted: Creator Mode");
-                } else {
-                    roleSpan.innerText = "Guest User";
-                    editBtn.classList.add('hidden');
-                    showToast("Welcome back, " + user);
-                }
-
-                // remember credentials and current dashboard values
-                storeData();
-            } else {
-                showToast("Please enter a name to login");
-            }
-        }
-                
         function handleLogout() {
-            document.getElementById('dashboard-screen').classList.add('hidden');
-            document.getElementById('login-screen').classList.remove('hidden');
-            document.getElementById('username').value = "";
-            document.getElementById('edit-panel').classList.add('hidden');
-            // clear stored login info so auto-login won't occur
+            // With the login screen removed, logout will clear stored data and reset display values
             clearStoredData();
+            document.getElementById('display-name').innerText = 'User';
+            const roleSpan = document.getElementById('display-role');
+            roleSpan.innerText = 'Guest User';
+            roleSpan.classList.remove('text-blue-400');
+            roleSpan.classList.add('text-slate-500');
+            document.getElementById('master-edit-btn').classList.add('hidden');
+            document.getElementById('edit-panel').classList.add('hidden');
+            showToast('Logged out');
         }
+
         function toggleEditMode() {
             const panel = document.getElementById('edit-panel');
             panel.classList.toggle('hidden');
@@ -345,16 +284,28 @@
             setTimeout(() => toast.classList.remove('active'), 2000);
         }
 
-        // restore data & auto-login on page load
+        // restore data on page load
         window.addEventListener('DOMContentLoaded', () => {
             const stored = loadStoredData();
-            if (stored && stored.username) {
-                document.getElementById('username').value = stored.username;
+            if (stored) {
+                if (stored.username) document.getElementById('display-name').innerText = stored.username;
                 if (stored.ip) document.getElementById('display-ip').innerText = stored.ip;
                 if (stored.software) document.getElementById('display-software').innerText = stored.software;
                 if (stored.uptime) document.getElementById('display-uptime').innerText = stored.uptime;
-                document.getElementById('display-server-text').innerText = "Active Server • " + stored.software;
-                handleLogin();
+                document.getElementById('display-server-text').innerText = "Active Server • " + (stored.software || '');
+
+                // If the stored username matches a creator, enable creator controls
+                const user = stored.username || '';
+                const roleSpan = document.getElementById('display-role');
+                const editBtn = document.getElementById('master-edit-btn');
+                if (user === "Bun MengHeng" || user === "Sinlong" || user === "Admin") {
+                    roleSpan.innerText = "System Creator";
+                    roleSpan.classList.replace('text-slate-500', 'text-blue-400');
+                    editBtn.classList.remove('hidden');
+                } else {
+                    roleSpan.innerText = "Guest User";
+                    editBtn.classList.add('hidden');
+                }
             }
         });
 
@@ -364,7 +315,6 @@
                 .then(() => console.log('Service worker registered'))
                 .catch(console.error);
         }
-    </script>
     </script>
 </body>
 </html>
