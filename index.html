@@ -66,20 +66,6 @@
         }
 
         .hidden { display: none; }
-
-        .edit-input {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 10px 16px;
-            width: 100%;
-            color: white;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .edit-input:focus {
-            border-color: #3b82f6;
-        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -98,9 +84,6 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button id="master-edit-btn" onclick="toggleEditMode()" class="p-2.5 bg-slate-800 rounded-xl text-blue-400 border border-slate-700 btn-tap">
-                        <i data-lucide="edit-3" class="w-5 h-5"></i>
-                    </button>
                 </div>
             </div>
         </nav>
@@ -116,34 +99,6 @@
                     </div>
                 </div>
             </header>
-
-            <!-- CREATOR EDIT PANEL (Only for Bun MengHeng) -->
-            <div id="edit-panel" class="hidden glass-card rounded-2xl p-6 mb-8 border-blue-500/30 bg-blue-500/5">
-                <div class="flex items-center gap-2 mb-4">
-                    <i data-lucide="shield-check" class="text-blue-500 w-5 h-5"></i>
-                    <h3 class="text-sm font-bold uppercase tracking-widest text-blue-400">Creator Control Panel</h3>
-                </div>
-                <div class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-[10px] text-slate-500 font-bold uppercase mb-1 block">Server IP</label>
-                            <input type="text" id="edit-ip-input" class="edit-input" value="mc.example-server.com:25565">
-                        </div>
-                        <div>
-                            <label class="text-[10px] text-slate-500 font-bold uppercase mb-1 block">Software</label>
-                            <input type="text" id="edit-software-input" class="edit-input" value="Paper 1.20.1">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="text-[10px] text-slate-500 font-bold uppercase mb-1 block">Uptime</label>
-                        <input type="text" id="edit-uptime-input" class="edit-input" value="2d 14h 05m">
-                    </div>
-                    <div class="flex gap-2 pt-2">
-                        <button onclick="saveChanges()" class="flex-1 bg-blue-600 py-3 rounded-xl font-bold btn-tap text-sm">Update Dashboard</button>
-                        <button onclick="toggleEditMode()" class="px-6 bg-slate-800 py-3 rounded-xl font-bold btn-tap text-sm text-slate-400">Cancel</button>
-                    </div>
-                </div>
-            </div>
 
             <div class="glass-card rounded-2xl md:rounded-3xl p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-8 text-slate-500">
@@ -214,30 +169,6 @@
                 }
             }
             return null;
-        }
-
-        function toggleEditMode() {
-            const panel = document.getElementById('edit-panel');
-            panel.classList.toggle('hidden');
-            lucide.createIcons();
-        }
-
-        function saveChanges() {
-            const newIp = document.getElementById('edit-ip-input').value;
-            const newSoftware = document.getElementById('edit-software-input').value;
-            const newUptime = document.getElementById('edit-uptime-input').value;
-            
-            document.getElementById('display-ip').innerText = newIp;
-            document.getElementById('display-software').innerText = newSoftware;
-            document.getElementById('display-uptime').innerText = newUptime;
-            
-            // Also update the sub-header
-            document.getElementById('display-server-text').innerText = "Active Server • " + newSoftware;
-            
-            toggleEditMode();
-            showToast("Dashboard Updated");
-            // persist changes as well
-            storeData();
         }
 
         function copyData(text) {
