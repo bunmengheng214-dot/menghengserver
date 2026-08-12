@@ -7,12 +7,11 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
-    
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- PWA manifest -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0f172a">
-    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgZmlsbD0iIzBmMTcyYSIvPjxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9IjYwIiBmaWxsPSIjM2I4MmY2Ii8+PHJlY3QgeD0iNzYiIHk9Ijc2IiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IndoaXRlIi8+PGNpcmNsZSBjeD0iODYiIGN5PSI4NiIgcj0iMyIgZmlsbD0iIzBmMTcyYSIvPjxjaXJjbGUgY3g9IjEwNiIgY3k9Ijg2IiByPSIzIiBmaWxsPSIjMGYxNzJhIi8+PGNpcmNsZSBjeD0iODYiIGN5PSIxMDYiIHI9IjMiIGZpbGw9IiMwZjE3MmEiLz48Y2lyY2xlIGN4PSIxMDYiIGN5PSIxMDYiIHI9IjMiIGZpbGw9IiMwZjE3MmEiLz48L3N2Zz4=">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgZmlsbD0[...]">
     <link rel="icon" href="Screenshot 2026-03-08 105358.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono&display=swap');
@@ -26,7 +25,7 @@
         }
 
         .font-mono {
-            font-family: 'JetBrains+Mono', monospace;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .glass-card {
@@ -84,7 +83,40 @@
 </head>
 <body class="min-h-screen">
 
-   
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="min-h-screen flex flex-col items-center justify-center px-6 animate-in fade-in duration-500">
+        <div class="mb-10 text-center">
+            <div class="w-20 h-20 bg-green-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-green-900/40 mx-auto mb-6">
+                <i data-lucide="server" class="text-white w-10 h-10"></i>
+            </div>
+            <h1 class="text-4xl font-black tracking-tight mb-2 uppercase">Server-Panel</h1>
+            <p class="text-slate-500 text-xs font-black tracking-[0.3em] uppercase">Public Access Mode</p>
+        </div>
+
+        <div class="w-full max-w-sm glass-card rounded-[32px] p-8">
+            <h2 class="text-xl font-bold mb-8">Your name</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-3 block">UserNAME</label>
+                    <div class="relative">
+                        <i data-lucide="user" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500"></i>
+                        <input type="text" id="username" placeholder="Write your name..." 
+                            class="w-full bg-slate-900/50 border border-slate-700 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-blue-500 transition-colors">
+                    </div>
+                </div>
+
+                <button onclick="handleLogin()" class="btn-tap w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-lg">
+                    <span>Login</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <p class="mt-6 text-center text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                
+            </p>
+        </div>
+    </div>
 
     <!-- MAIN DASHBOARD -->
     <div id="dashboard-screen" class="hidden">
@@ -161,7 +193,7 @@
                     <div class="flex flex-col">
                         <label class="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-3">Server Address</label>
                         <div class="flex items-center gap-4">
-                            <button onclick="copyData(document.getElementById('display-ip').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700 flex items-center justify-center">
+                            <button onclick="copyData(document.getElementById('display-ip').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700">
                                 <i data-lucide="copy" class="w-5 h-5"></i>
                             </button>
                             <span id="display-ip" class="font-mono text-base md:text-xl text-blue-300 break-all leading-tight font-bold">mc.example-server.com:25565</span>
@@ -172,7 +204,7 @@
                     <div class="flex flex-col">
                         <label class="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-3">Software / Engine</label>
                         <div class="flex items-center gap-4">
-                            <button onclick="copyData(document.getElementById('display-software').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700 flex items-center justify-center">
+                            <button onclick="copyData(document.getElementById('display-software').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700">
                                 <i data-lucide="copy" class="w-5 h-5"></i>
                             </button>
                             <span id="display-software" class="text-lg md:text-xl font-bold text-slate-100">Paper 1.20.1</span>
@@ -183,7 +215,7 @@
                     <div class="flex flex-col">
                         <label class="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-3">Session Uptime</label>
                         <div class="flex items-center gap-4">
-                            <button onclick="copyData(document.getElementById('display-uptime').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700 flex items-center justify-center">
+                            <button onclick="copyData(document.getElementById('display-uptime').innerText)" class="btn-tap shrink-0 w-12 h-12 bg-slate-800 text-blue-400 rounded-xl border border-slate-700">
                                 <i data-lucide="copy" class="w-5 h-5"></i>
                             </button>
                             <span id="display-uptime" class="text-lg md:text-xl font-bold text-slate-100">2d 14h 05m</span>
@@ -197,15 +229,18 @@
     <div id="toast">COPIED TO CLIPBOARD</div>
 
     <script>
-        lucide.createIcons();
+        // initialize lucide icons (script is loaded in head)
+        if (typeof lucide !== 'undefined') lucide.createIcons();
 
         // ---- persistent storage helpers ----
         function storeData() {
+            const usernameEl = document.getElementById('username');
+            const displayNameEl = document.getElementById('display-name');
             const data = {
-                username: document.getElementById('username').value.trim(),
-                ip: document.getElementById('display-ip').innerText,
-                software: document.getElementById('display-software').innerText,
-                uptime: document.getElementById('display-uptime').innerText
+                username: usernameEl ? usernameEl.value.trim() : (displayNameEl ? displayNameEl.innerText : ''),
+                ip: document.getElementById('display-ip') ? document.getElementById('display-ip').innerText : '',
+                software: document.getElementById('display-software') ? document.getElementById('display-software').innerText : '',
+                uptime: document.getElementById('display-uptime') ? document.getElementById('display-uptime').innerText : ''
             };
             localStorage.setItem('serverPanelData', JSON.stringify(data));
         }
@@ -227,7 +262,8 @@
         }
 
         function handleLogin() {
-            const user = document.getElementById('username').value.trim();
+            const userInput = document.getElementById('username');
+            const user = userInput ? userInput.value.trim() : '';
             
             if (user !== "") {
                 document.getElementById('login-screen').classList.add('hidden');
@@ -260,7 +296,8 @@
         function handleLogout() {
             document.getElementById('dashboard-screen').classList.add('hidden');
             document.getElementById('login-screen').classList.remove('hidden');
-            document.getElementById('username').value = "";
+            const usernameEl = document.getElementById('username');
+            if (usernameEl) usernameEl.value = "";
             document.getElementById('edit-panel').classList.add('hidden');
             // clear stored login info so auto-login won't occur
             clearStoredData();
@@ -268,7 +305,7 @@
         function toggleEditMode() {
             const panel = document.getElementById('edit-panel');
             panel.classList.toggle('hidden');
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
         function saveChanges() {
@@ -290,16 +327,35 @@
         }
 
         function copyData(text) {
-            const temp = document.createElement('textarea');
-            temp.value = text;
-            temp.style.position = 'fixed';
-            temp.style.left = '-9999px';
-            document.body.appendChild(temp);
-            temp.select();
-            document.execCommand('copy');
-            document.body.removeChild(temp);
-            showToast("COPIED TO CLIPBOARD");
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast("COPIED TO CLIPBOARD");
+                }).catch(() => {
+                    // fallback
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
         }
+
+        function fallbackCopy(text) {
+            try {
+                const temp = document.createElement('textarea');
+                temp.value = text;
+                temp.style.position = 'fixed';
+                temp.style.left = '-9999px';
+                document.body.appendChild(temp);
+                temp.select();
+                document.execCommand('copy');
+                document.body.removeChild(temp);
+                showToast("COPIED TO CLIPBOARD");
+            } catch (e) {
+                showToast("Unable to copy");
+                console.error('Copy failed', e);
+            }
+        }
+
         function savelog(msg) {
             console.log("[Server-Panel Log] " + msg);
            
@@ -316,11 +372,12 @@
         window.addEventListener('DOMContentLoaded', () => {
             const stored = loadStoredData();
             if (stored && stored.username) {
-                document.getElementById('username').value = stored.username;
-                if (stored.ip) document.getElementById('display-ip').innerText = stored.ip;
-                if (stored.software) document.getElementById('display-software').innerText = stored.software;
-                if (stored.uptime) document.getElementById('display-uptime').innerText = stored.uptime;
-                document.getElementById('display-server-text').innerText = "Active Server • " + stored.software;
+                const usernameEl = document.getElementById('username');
+                if (usernameEl) usernameEl.value = stored.username;
+                if (stored.ip && document.getElementById('display-ip')) document.getElementById('display-ip').innerText = stored.ip;
+                if (stored.software && document.getElementById('display-software')) document.getElementById('display-software').innerText = stored.software;
+                if (stored.uptime && document.getElementById('display-uptime')) document.getElementById('display-uptime').innerText = stored.uptime;
+                if (stored.software && document.getElementById('display-server-text')) document.getElementById('display-server-text').innerText = "Active Server • " + stored.software;
                 handleLogin();
             }
         });
@@ -331,7 +388,6 @@
                 .then(() => console.log('Service worker registered'))
                 .catch(console.error);
         }
-    </script>
     </script>
 </body>
 </html>
